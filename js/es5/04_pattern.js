@@ -1,4 +1,5 @@
 // 네임 스페이스 패턴: 변수 x는 공개되어있어 변조가 가능하다.
+
 var com = {};
 com.eastflag = {};
 com.eastflag.java = {
@@ -12,10 +13,12 @@ com.eastflag.java.getX();
 com.eastflag.java.x = 'change';
 com.eastflag.java.getX();
 
+
 // IIFE (즉시 실행함수) 패턴
-/*var com = {};
+/*
+var com = {};
 com.eastflag = {};
-com.eastflag.java = (function () {
+com.eastflag.java = (function () {// 클로저 함수 접근 불가능
     var x = 'private';
     function y() {
         console.log(x);
@@ -23,4 +26,7 @@ com.eastflag.java = (function () {
     return { getX: y };
 })();
 
-com.eastflag.java.getX();*/
+com.eastflag.java.getX();
+com.eastflag.java.x = 'change';
+com.eastflag.java.getX();
+*/

@@ -8,7 +8,8 @@ import {TodoVO} from '../domain/todo.vo';
   styleUrls: ['./angular.component.scss']
 })
 export class AngularComponent implements OnInit {
-  todoList: Array<TodoVO>;
+  todoList: Array<TodoVO>; // todo를 가져오기 위한 객체
+  newTodo: TodoVO = new TodoVO(); // todo추가를 위한 객체
 
   constructor(private userService: UserService) { }
 
@@ -21,5 +22,9 @@ export class AngularComponent implements OnInit {
       console.log(data);
       this.todoList = data;
     });
+  }
+
+  addTodo() {
+    this.userService.addTodo(this.newTodo).subscribe(data => console.log(data));
   }
 }

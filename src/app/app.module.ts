@@ -13,6 +13,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { AngularComponent } from './angular/angular.component';
 import {UserService} from './user.service';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule, // ngModel을 사용하기 위해
     AppRoutingModule,
     HttpClientModule,
     FlexLayoutModule,

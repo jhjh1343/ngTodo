@@ -15,7 +15,7 @@ export class UserService {
   }
 
   getTodoList() {
-    return this.http.get(this.SERVER + '/api.todo');
+    return this.http.get(this.SERVER + '/api/todo');
   }
 
 }

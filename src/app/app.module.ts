@@ -12,6 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AngularComponent } from './angular/angular.component';
 import {UserService} from './user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {UserService} from './user.service';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatMenuModule,

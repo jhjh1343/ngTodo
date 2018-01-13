@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
+import {TodoVO} from '../domain/todo.vo';
 
 @Component({
   selector: 'app-angular',
@@ -7,6 +8,7 @@ import {UserService} from '../user.service';
   styleUrls: ['./angular.component.scss']
 })
 export class AngularComponent implements OnInit {
+  todoList: Array<TodoVO>;
 
   constructor(private userService: UserService) { }
 
@@ -15,6 +17,9 @@ export class AngularComponent implements OnInit {
   }
 
   getTodoList() {
-
+    this.userService.getTodoList().subscribe((data: Array<TodoVO>) => {
+      console.log(data);
+      this.todoList = data;
+    });
   }
 }

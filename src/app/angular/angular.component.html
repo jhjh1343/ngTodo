@@ -3,10 +3,19 @@
     <mat-card-title>My Todo List</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div fxLayout="row">
-      <input type="text" placeholder="할일" id="input_todo" fxFlex="4 1 auto" [(ngModel)]="newTodo.todo">
-      <button type="button" fxFlex="1 1 auto" class="active" (click)="addTodo()">추가</button>
-    </div>
+    <!--ngNativeValidate를 form에 넣으면 html5 vali 사용하겠다.
+      #이 붙으면 angluar context영역으로 된다.
+    -->
+    <form  #myForm="ngForm" (ngSubmit)="addTodo()">
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxFlex="4 1 auto">
+          <input matInput placeholder="할일" id="input_todo" name="todo" #name="ngModel" [(ngModel)]="newTodo.todo" required>
+          <mat-hint align="start" style="color: red;">{{!name.value? '할일을 입력하세요' : ''}}</mat-hint>
+        </mat-form-field>
+          <button type="submit" mat-raised-button color="primary" fxFlex="1 1 auto" [disabled]="!myForm.form.valid">추가</button>
+        <!--myForm은 angular이거 myForm.form 라고 하면 javascript form node가된다.-->
+      </div>
+    </form>
     <hr>
     <table class="table">
       <thead>
@@ -19,7 +28,7 @@
       </tr>
       </thead>
       <tbody id="todo_list">
-      <tr *ngFor="let item of todoList">
+      <tr *ngFor="let item of todoList" [@flyInOut]="'in'">
         <td>{{item.isFinished ?  '완료' : '미완료'}}</td>
         <td>{{item.todo}}</td>
         <td>{{item.created}}</td>

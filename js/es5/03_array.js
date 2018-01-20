@@ -16,7 +16,7 @@ var books = [
 ];
 
 // 2. books의 type은 무엇인가? 자바스크립트의 타입은 몇가지가 있는가?
-console.log(typeof books);
+//console.log(typeof books);
 /*
 Object이다
 2가지타입
@@ -27,7 +27,7 @@ Object
 
 //3. 맨 앞쪽에 이것이자바다, 40000, 김상형, 5를 추가하시오 (힌트: unshift)
 books.unshift({title: "이것이자바다", price: 40000, author: "김상형,", order: 5})
-console.log(books);
+//console.log(books);
 
 //4. 맨 앞쪽에 추가한것을 지우시오,(shift)
 
@@ -53,7 +53,22 @@ console.log(books);
 
 // 11. 제목앞에 판매순위를 등수를 붙인 새로운 배열을 생성하시오.(힌트: map)
 //맵은 돌린후 결과를 받을수 있다.
+var newMap = books.map(function (item) {
+  item.title = item.order + "등" + item.title;
+  return item;
+});
+//console.log(newMap);
+//console.log(books);
+//shallow copy <-> deep copy
+
 
 
 // 12. 새로운 배열을 만들되 3등안에 있는것만 따로 만든다. (힌트: filter)
 
+var newFilter = books.filter(item=>{
+  if(item.order <= 3 ){
+    return true;
+  }
+});
+
+console.log(newFilter)

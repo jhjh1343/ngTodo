@@ -1,4 +1,4 @@
-// 나머지 연산자 ...
+// 나머지 연산자 ...파라미터가 몇개들어올지 모를때 사용한다.
 function sortRestArgs(...theArgs) {
     var sortedArgs = theArgs.sort();
     return sortedArgs;

@@ -23,5 +23,6 @@ myFunction(undefined, 1, undefined);
 오버로딩 안된다. 같은 이름의 함수를 매개변수가 다르게 만들수 없다는 소리
 typescript는 오버로딩 가능하다.
 
-? optional
+? optional연산자는 typescript 관련
+
 */

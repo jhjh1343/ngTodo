@@ -28,7 +28,7 @@
       </tr>
       </thead>
       <tbody id="todo_list">
-      <ng-template ngFor let-item [ngForOf]="todoList">
+      <ng-template ngFor let-item [ngForOf]="todoList" let-idx="index">
         <tr [@flyInOut]="'in'" *ngIf="!item.isEdited">
           <td>{{item.isFinished ?  '완료' : '미완료'}}</td>
           <td>{{item.todo}}</td>
@@ -36,7 +36,7 @@
           <td>{{item.updated}}</td>
           <td>
             <button mat-raised-button color="accent" (click)="save(item)">수정</button>
-            <button mat-raised-button color="warn" (click)="remove(item)">삭제</button>
+            <button mat-raised-button color="warn" (click)="remove(item, idx)">삭제</button>
           </td>
         </tr>
         <tr [@flyInOut]="'in'" *ngIf="item.isEdited">

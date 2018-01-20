@@ -17,6 +17,6 @@ let a = 20;
 let b = 10;
 let c = "자바스크립트";
 
-let str = tag `나는 ${a+b}살이고 ${c}를 좋아해`;
+let str = `나는 ${a+b}살이고 ${c}를 좋아해`;
 
 console.log(str);

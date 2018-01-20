@@ -23,4 +23,11 @@ export class UserService {
     return this.http.post(this.SERVER + '/api/todo', params, {headers: this.headers});
   }
 
+  removeTodo(todo_id: number) {
+
+    // return this.http.delete(this.SERVER + '/api/todo?todo_id=' + todo_id);
+    // es6에서 백틱 ` ` 이라는게 나오고 그 안에는 ${} 이렇게 변수 사용가능
+    return this.http.delete(this.SERVER + `/api/todo?todo_id=${todo_id}`);
+  }
+
 }

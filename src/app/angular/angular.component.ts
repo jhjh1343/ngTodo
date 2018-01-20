@@ -20,6 +20,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class AngularComponent implements OnInit {
   todoList: Array<TodoVO>; // todo를 가져오기 위한 객체
   newTodo: TodoVO = new TodoVO(); // todo추가를 위한 객체
+  // 수정시 담을 콜렉션
+  // tempTodoList: Map<number, TodoVO> = new Map<number, TodoVO>(); 이걸 생략함
+  tempTodoList = new Map<number, TodoVO>();
 
   constructor(private userService: UserService) { }
 
@@ -42,6 +45,12 @@ export class AngularComponent implements OnInit {
   // 템플릿 폼을 에디터로 전환
   save (item: TodoVO) {
     item.isEdited = true;
+
+    // 기존값 저장( Shallow copy를 해서 안됨. <> Deep copy를 해야함  그럴려면 new를 해줘야함.)
+    const newTodo = new TodoVO();
+    newTodo.isFinished = item.isFinished;
+    newTodo.todo = item.todo;
+    this.tempTodoList.set(item.todo_id, newTodo);
   }
 
   // 서버에서 삭제
@@ -56,6 +65,11 @@ export class AngularComponent implements OnInit {
   // 에디터를 원래대로 복귀
   restore (item: TodoVO) {
     item.isEdited = false;
+
+    // 기존값 복원
+    const todoVo = this.tempTodoList.get(item.todo_id);
+    item.isFinished = todoVo.isFinished;
+    item.todo = todoVo.todo;
   }
 
 }

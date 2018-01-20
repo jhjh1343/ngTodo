@@ -76,7 +76,12 @@ export class AngularComponent implements OnInit {
 
   // 서버에서 수정
   modify (item: TodoVO) {
-
+    this.userService.modifyTodo(item).subscribe((data: TodoVO) => {
+      item.isFinished = data.isFinished;
+      item.todo = data.todo;
+      item.updated = data.updated;
+      item.isEdited = false;
+    });
   }
   // 에디터를 원래대로 복귀
   restore (item: TodoVO) {

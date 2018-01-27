@@ -5,7 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import {
-  MatButtonModule, MatCardContent, MatCardModule, MatFormFieldModule, MatIcon, MatIconModule, MatInputModule, MatPaginatorModule,
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule,
+  MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -30,6 +31,7 @@ import {FormsModule} from '@angular/forms';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
     CKEditorModule
   ],
   declarations: [AdminComponent, HomeComponent, NewsComponent, ViewComponent, WriteComponent],

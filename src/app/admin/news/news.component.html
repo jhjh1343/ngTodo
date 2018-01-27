@@ -1,3 +1,23 @@
-<p>
-  news works!
-</p>
+<router-outlet></router-outlet>
+
+<mat-card *ngIf="newsList">
+  <mat-card-header>
+    <mat-card-title>
+      뉴스 목록
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="board-box" fxLayout="column" *ngFor="let news of newsList" (click)="gotoView(news)">
+      <p fxLayout="row" fxLayoutAlign="space-between center">
+        <span>{{news.title}}</span><span>{{news.created}}</span>
+      </p>
+    </div>
+    <!– 페이지네이션 -->
+    <mat-paginator [length]="page.totalCount"
+                   [pageSize]="page.pageSize"
+                   [pageIndex]="page.pageIndex"
+                   [pageSizeOptions]="page.pageSizeOptions"
+                   (page)="pageChanged($event)">
+    </mat-paginator>
+  </mat-card-content>
+</mat-card>

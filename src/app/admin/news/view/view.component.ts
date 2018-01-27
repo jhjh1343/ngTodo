@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {AdminRoutingModule} from '../../admin-routing.module';
 import {AdminService} from '../../admin.service';
 import {NewsVo} from '../../../domain/news.vo';
+import {NewsViewDialogComponent} from './news.view.dialog.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-view',
@@ -11,7 +13,7 @@ import {NewsVo} from '../../../domain/news.vo';
 })
 export class ViewComponent implements OnInit {
   news = new NewsVo();
-  constructor(private route: ActivatedRoute, private adminService: AdminService) {
+  constructor(private route: ActivatedRoute, private adminService: AdminService, private dialog: MatDialog) {
     console.log("constructor");
   }
 
@@ -22,5 +24,11 @@ export class ViewComponent implements OnInit {
 
     });
   }
-
+  confirmRemove() {
+    // 컨펌 다이어로그 띄우기
+    const dialogRef = this.dialog.open(NewsViewDialogComponent, {data: {content: '삭제하시겠습니까?'}});
+    dialogRef.afterClosed().subscribe(data => {
+     console.log(data);
+    });
+  }
 }

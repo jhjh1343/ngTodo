@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule,
+  MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatPaginatorModule,
   MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
@@ -16,6 +16,7 @@ import { ViewComponent } from './news/view/view.component';
 import { WriteComponent } from './news/write/write.component';
 import {CKEditorModule} from 'ng2-ckeditor';
 import {FormsModule} from '@angular/forms';
+import {NewsViewDialogComponent} from './news/view/news.view.dialog.component';
 
 @NgModule({
   imports: [
@@ -32,9 +33,11 @@ import {FormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
+    MatDialogModule,
     CKEditorModule
   ],
-  declarations: [AdminComponent, HomeComponent, NewsComponent, ViewComponent, WriteComponent],
-  providers: [AdminService]
+  declarations: [AdminComponent, HomeComponent, NewsComponent, ViewComponent, WriteComponent, NewsViewDialogComponent],
+  providers: [AdminService],
+  entryComponents: [NewsViewDialogComponent]
 })
 export class AdminModule { }
